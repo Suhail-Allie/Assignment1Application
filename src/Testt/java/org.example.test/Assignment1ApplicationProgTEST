@@ -1,0 +1,33 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class NumberGuessingGameTest {
+    private NumberGuessingGame game;
+
+    @BeforeEach
+    public void setUp() {
+        game = new NumberGuessingGame();
+    }
+
+    @Test
+    public void testGuessTooLow() {
+        int numberToGuess = game.numberToGuess; // Accessing private field directly for simplicity
+        String result = game.guessNumber(numberToGuess - 1);
+        assertEquals("Too low!", result);
+    }
+
+    @Test
+    public void testGuessTooHigh() {
+        int numberToGuess = game.numberToGuess; // Accessing private field directly for simplicity
+        String result = game.guessNumber(numberToGuess + 1);
+        assertEquals("Too high!", result);
+    }
+
+    @Test
+    public void testGuessCorrect() {
+        int numberToGuess = game.numberToGuess; // Accessing private field directly for simplicity
+        String result = game.guessNumber(numberToGuess);
+        assertTrue(result.startsWith("Correct!"));
+    }
+}
